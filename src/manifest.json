@@ -1,0 +1,21 @@
+{
+  "name": "space.astro.cz fits browser",
+  "version": "0.2",
+  "manifest_version": 2,
+  "description": "Kratky popis",
+  "icons": { "128": "icon_128.png" },
+  "background_page": "bg.html",
+  "content_scripts": [
+    {
+      "matches": ["http://space.astro.cz/*"],
+      "css": ["style.css"],
+      "js": ["over.js"]
+    }
+  ],
+  "permissions": ["tabs","http://space.astro.cz/"],
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "icon_19.png",
+    "default_popup": "popup.html"
+  }
+}
