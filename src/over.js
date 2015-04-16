@@ -10,13 +10,19 @@ function popup(element) {
 }
 
 function IMGwindow(url) {
-	IMGshow.innerHTML = "ahoj <br><img src=\"http://meteor1.astrozor.cz/f.png?"+url +"\">";
-}
+	IMGshow.innerHTML = "";
+	IMGshow.innerHTML = IMGshow.innerHTML + "<a href=\"http://meteor1.astrozor.cz/f.png?"+url +"\">meteor1.astrozor.cz/f.png?..."+url.slice(-20) +"</a><br>";
+	var lastSlash = url.lastIndexOf("/");
+	IMGshow.innerHTML = IMGshow.innerHTML + "from:   <b>" + url.substring(lastSlash+1).substring(6,8) + "."+ url.substring(lastSlash+1).substring(4,6) + "."+ url.substring(lastSlash+1).substring(0,4) + "  "+ url.substring(lastSlash+1).substring(8,10) + ":"+ url.substring(lastSlash+1).substring(10,12) + ":"+ url.substring(lastSlash+1).substring(12,14)+ "</b>,"+ url.substring(lastSlash+1).substring(14,17) + "<hr>";
+	IMGshow.innerHTML = IMGshow.innerHTML + "<img src=\"http://meteor1.astrozor.cz/f.png?"+url +"\"><br><hr>";
+	IMGshow.innerHTML = IMGshow.innerHTML + "<small>" + url + "</small>";
+}// <a href="index.html">Hlavní stránka</a>
 
 function move(){
 	var x = event.clientX, y = event.clientY,
 	elementMouseIsOver = document.elementFromPoint(x, y);
-	if (elementMouseIsOver.getAttribute("href") != null){
+	//log(elementMouseIsOver.innerHTML);
+	if (elementMouseIsOver.getAttribute("href") != null && elementMouseIsOver.parentNode.id != "IMGshow" && elementMouseIsOver.innerHTML.indexOf(".") > 2){
 		IMGwindow(document.URL+elementMouseIsOver.getAttribute("href"));
 	}
 	//log("mouse move: "+elementMouseIsOver.getAttribute("href")+"<img src=\"http://meteor1.astrozor.cz/f.png?"+document.URL+elementMouseIsOver.getAttribute("href") +"\">");
