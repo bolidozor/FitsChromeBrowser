@@ -95,6 +95,7 @@ document.body.appendChild(logDiv);
 
 //document.getElementById('Plot').onclick = go;
 document.body.addEventListener("mousemove", move);
+
 //var x = event.clientX, y = event.clientY,
 //elementMouseIsOver = document.elementFromPoint(x, y);
 

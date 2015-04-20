@@ -46,6 +46,9 @@ img:hover ~ body {
 	background-color: ddd;
 }
 
+li:hover{
+	background-color: eee;
+}
 
 
 
