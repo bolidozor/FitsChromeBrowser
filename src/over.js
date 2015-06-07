@@ -61,19 +61,27 @@ function move(){
 	elementMouseIsOver = document.elementFromPoint(x, y);
 	//log(elementMouseIsOver.innerHTML);
 	if (elementMouseIsOver.getAttribute("href") != null && elementMouseIsOver.parentNode.id != "IMGshow" && elementMouseIsOver.innerHTML.indexOf(".") > 2){
-		if (elementMouseIsOver.innerHTML.indexOf(".csv") > 0)
-		{
-			//CSVwindow(document.URL+elementMouseIsOver.getAttribute("href"));
-			IMGshow.innerHTML = "Nyní nepodporované; .csv file";
-		} else {
-			if (elementMouseIsOver.innerHTML.indexOf(".fit") > 0)
-			{
-			IMGwindow(document.URL+elementMouseIsOver.getAttribute("href"));
-			}else{
+
+		switch (true) {
+			case (elementMouseIsOver.innerHTML.indexOf(".csv") > 0):
+				IMGshow.innerHTML = "Nyní nepodporované; .csv file";
+				break;
+			case (elementMouseIsOver.innerHTML.indexOf(".fit") > 0):
+				IMGwindow(document.URL+elementMouseIsOver.getAttribute("href"));
+				break;
+			case (elementMouseIsOver.innerHTML.indexOf("rmob.cfg") > 0):
+				RMOBwindow(document.URL+elementMouseIsOver.getAttribute("href"));
+				break;
+			default:
 				IMGshow.innerHTML = "Nyní nepodporované; neznámé";
-			}
-		};
-	}
+				break;
+		}
+
+ 	}
+
+
+
+
 	//log("mouse move: "+elementMouseIsOver.getAttribute("href")+"<img src=\"http://meteor1.astrozor.cz/f.png?"+document.URL+elementMouseIsOver.getAttribute("href") +"\">");
 }
 
